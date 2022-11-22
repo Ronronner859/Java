@@ -5,12 +5,11 @@
 <!--
     namesqpce:名称空间
 -->
-<mapper namespace="com.java.mapper.UserMapper">
-    <select id="selectAll" resultType="User">
-        select * from tb_user;
-    </select>
-    <select id="selectById" resultType="com.java.pojo.User">
+<mapper namespace="com.java.mapper.BrandMapper">
+
+
+    <select id="selectAll" resultType="com.java.pojo.Brand">
         select *
-        from tb_user where id = {#id};
+        from tb_brand;
     </select>
 </mapper>
