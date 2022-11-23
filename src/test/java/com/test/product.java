@@ -31,4 +31,25 @@ public class product {
 
 
     }
+    @Test
+
+    public void selectById() throws IOException {
+        int id = 3;
+        //获取对象
+        //        加载mybatis的核心配置文件，获取sqlSessionFactory对象
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+//        2.获取sqlSession对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        ProductMapper mapper = sqlSession.getMapper(ProductMapper.class);
+
+        //获取id
+        Product product = mapper.selectAllById(id);
+        System.out.println(product);
+        sqlSession.close();
+
+
+    }
 }

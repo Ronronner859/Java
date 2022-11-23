@@ -12,4 +12,9 @@
         select *
         from tb_other;
     </select>
+    <select id="selectById" resultType="com.java.pojo.Other">
+        select *
+        from tb_user
+        where id = #{id};
+    </select>
 </mapper>

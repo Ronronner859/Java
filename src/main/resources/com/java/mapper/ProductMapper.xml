@@ -11,4 +11,9 @@
         select *
         from product;
     </select>
+    <select id="selectAllById" resultType="com.java.pojo.Product">
+        select *
+        from product
+        where id = #{id};
+    </select>
 </mapper>

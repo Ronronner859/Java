@@ -37,4 +37,29 @@ public class Other {
 
 
     }
+    @Test
+    public void selectById() throws IOException {
+        //获取对象
+        int id = 2;
+        //        加载mybatis的核心配置文件，获取sqlSessionFactory对象
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+//        2.获取sqlSession对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        OtherMapper mapper = sqlSession.getMapper(OtherMapper.class);
+
+//
+        com.java.pojo.Other other = mapper.selectById(id);
+
+        System.out.println(other);
+
+
+        sqlSession.close();
+
+
+
+
+    }
 }
