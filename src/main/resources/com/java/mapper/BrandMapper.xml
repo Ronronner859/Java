@@ -7,9 +7,96 @@
 -->
 <mapper namespace="com.java.mapper.BrandMapper">
 
+    <!--数据库表的字段名称 和 实体类的属性名称 不一样，则不能自动封装数据-->
+    <!--    1.起别名
+                缺点：定义别名
+            2.定义sql片段
+                缺点：不灵活
+            3.resultMap
+                1.定义标签
+                2.使用属性替换
 
-    <select id="selectAll" resultType="com.java.pojo.Brand">
+            -->
+    <!--    <sql id="brand_column">-->
+    <!--        id, brand_Name as brandName, company_Name as companyName,ordered,description,status-->
+    <!--    </sql>-->
+    <!--
+            id:唯一标识
+            type:映射的类型
+            -->
+    <resultMap id="brandResultMap" type="brand">
+        <!--
+                id:完成主键的映射
+                    column:表的列名
+                    property:实体类的属性名
+                result：完成一般字段的映射
+        -->
+        <result column="brand_Name" property="brandName"/>
+        <result column="company_Name" property="companyName"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="brandResultMap">
         select *
         from tb_brand;
     </select>
+    <select id="selectAllById" resultMap="brandResultMap">
+        select *
+        from tb_brand where id = #{id};
+<!--        参数占位符：
+                 1.#{} 将其替换成？防止sql注入
+                 2.${} 拼sql 会存在sql注入问题
+                 -->
+    </select>
+    <select id="selectByCondition" resultMap="brandResultMap">
+        select *
+        from tb_brand
+<!--        where 1 = 1-->
+        <where>
+<!--        动态条件查询 逻辑表达式 test
+                2.1=1
+                3.where标签
+                -->
+        <if test="status != null">
+            status = #{status}
+        </if>
+        <if test="companyName != null and companyName !='' ">
+            and company_Name like #{companyName}
+        </if>
+        <if test="brandName != null and brandName !='' ">
+            and brand_Name like #{brandName}
+        </if>
+        </where>
+
+    </select>
+
+    <select id="selectAllByConditionSingle" resultMap="brandResultMap">
+        select *
+        from tb_brand
+<!--        where-->
+        <!--        choose相当于switch-->
+<!--        用where自动生成-->
+        <where>
+            <choose>
+                <when test="status != null">
+                    <!--                when相当于when-->
+                    status = #{status}
+                </when>
+                <when test="companyName != null and companyName !=''">
+                    <!--                when相当于when-->
+                    and company_Name like #{companyName}
+                </when>
+                <when test="brandName != null and brandName !=''">
+                    <!--                when相当于when-->
+                    and brand_Name like #{brandName}
+                </when>
+                <!--            <otherwise>-->
+                <!--                1 = 1-->
+                <!--            </otherwise>-->
+            </choose>
+        </where>
+    </select>
+    <insert id="add">
+        insert into tb_brand (brand_name,company_name,ordered,description,status)
+        values (#{brandName},#{companyName},#{ordered},#{description},#{status});
+    </insert>
 </mapper>
