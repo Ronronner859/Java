@@ -103,21 +103,21 @@
     <update id="update">
         update tb_brand
         <set>
-        <if test="brandName !=null and brandName != '' ">
-            brand_name = #{brandName},
-        </if>
-        <if test="companyName !=null and companyName != '' ">
-            company_name = #{companyName},
-        </if>
-        <if test="ordered !=null ">
-            ordered = #{ordered},
-        </if>
-        <if test="description !=null and description != '' ">
-            description = #{description},
-        </if>
-        <if test="status !=null">
-            status = #{status}
-        </if>
+            <if test="brandName !=null and brandName != '' ">
+                brand_name = #{brandName},
+            </if>
+            <if test="companyName !=null and companyName != '' ">
+                company_name = #{companyName},
+            </if>
+            <if test="ordered !=null ">
+                ordered = #{ordered},
+            </if>
+            <if test="description !=null and description != '' ">
+                description = #{description},
+            </if>
+            <if test="status !=null">
+                status = #{status}
+            </if>
             where id = #{id};
         </set>
 
@@ -126,8 +126,19 @@
         delete from tb_brand
         where id = #{id};
     </delete>
-
-
+    <delete id="deleteByIds">
+        delete from tb_brand
+        where id
+        in
+<!--        mybatis会讲数组参数，封装为一个集合
+            1.1默认为数组 array
+            2.使用@param注解改变map集合的默认的key的名称
+-->
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+        ;
+    </delete>
 
 
 </mapper>

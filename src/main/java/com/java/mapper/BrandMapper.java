@@ -34,5 +34,8 @@ public interface BrandMapper {
 //    删除 通过id删除
     void deleteById(int id);
 
+//    批量删除
+    void deleteByIds(@Param("ids") int[] ids);
+
 
 }
