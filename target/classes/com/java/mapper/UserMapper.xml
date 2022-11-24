@@ -17,4 +17,11 @@
         select *
         from tb_user where id = {#id};
     </select>
+    <select id="selects" resultType="com.java.pojo.User">
+        select *
+        from tb_user
+        where
+            username = #{username}
+        and password = #{password}
+    </select>
 </mapper>

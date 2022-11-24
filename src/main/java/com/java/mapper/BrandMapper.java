@@ -2,6 +2,7 @@ package com.java.mapper;
 
 
         import com.java.pojo.Brand;
+        import com.java.pojo.User;
         import org.apache.ibatis.annotations.Param;
 
         import java.util.List;
@@ -36,6 +37,7 @@ public interface BrandMapper {
 
 //    批量删除
     void deleteByIds(@Param("ids") int[] ids);
+
 
 
 }

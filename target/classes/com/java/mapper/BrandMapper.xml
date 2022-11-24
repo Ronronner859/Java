@@ -95,6 +95,8 @@
             </choose>
         </where>
     </select>
+    <select id="select" resultType="com.java.pojo.User"></select>
+
     <!--    主键返回 可以获取到对应的id-->
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
         insert into tb_brand (brand_name,company_name,ordered,description,status)
