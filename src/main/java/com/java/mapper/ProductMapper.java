@@ -11,5 +11,7 @@ public interface ProductMapper {
 //    查询详情
    Product selectAllById(int id);
 //   散装查询
-//
+//单条件查询
+//    添加
+    void  add(Product Product);
 }

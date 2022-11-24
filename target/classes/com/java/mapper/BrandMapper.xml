@@ -42,29 +42,29 @@
     <select id="selectAllById" resultMap="brandResultMap">
         select *
         from tb_brand where id = #{id};
-<!--        参数占位符：
-                 1.#{} 将其替换成？防止sql注入
-                 2.${} 拼sql 会存在sql注入问题
-                 -->
+        <!--        参数占位符：
+                         1.#{} 将其替换成？防止sql注入
+                         2.${} 拼sql 会存在sql注入问题
+                         -->
     </select>
     <select id="selectByCondition" resultMap="brandResultMap">
         select *
         from tb_brand
-<!--        where 1 = 1-->
+        <!--        where 1 = 1-->
         <where>
-<!--        动态条件查询 逻辑表达式 test
-                2.1=1
-                3.where标签
-                -->
-        <if test="status != null">
-            status = #{status}
-        </if>
-        <if test="companyName != null and companyName !='' ">
-            and company_Name like #{companyName}
-        </if>
-        <if test="brandName != null and brandName !='' ">
-            and brand_Name like #{brandName}
-        </if>
+            <!--        动态条件查询 逻辑表达式 test
+                            2.1=1
+                            3.where标签
+                            -->
+            <if test="status != null">
+                status = #{status}
+            </if>
+            <if test="companyName != null and companyName !='' ">
+                and company_Name like #{companyName}
+            </if>
+            <if test="brandName != null and brandName !='' ">
+                and brand_Name like #{brandName}
+            </if>
         </where>
 
     </select>
@@ -72,13 +72,13 @@
     <select id="selectAllByConditionSingle" resultMap="brandResultMap">
         select *
         from tb_brand
-<!--        where-->
+        <!--        where-->
         <!--        choose相当于switch-->
-<!--        用where自动生成-->
+        <!--        用where自动生成-->
         <where>
             <choose>
                 <when test="status != null">
-                    <!--                when相当于when-->
+                    <!--                when相当于when -->
                     status = #{status}
                 </when>
                 <when test="companyName != null and companyName !=''">
@@ -95,8 +95,32 @@
             </choose>
         </where>
     </select>
-    <insert id="add">
+    <!--    主键返回 可以获取到对应的id-->
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
         insert into tb_brand (brand_name,company_name,ordered,description,status)
         values (#{brandName},#{companyName},#{ordered},#{description},#{status});
     </insert>
+    <update id="update">
+        update tb_brand
+        <set>
+        <if test="brandName !=null and brandName != '' ">
+            brand_name = #{brandName},
+        </if>
+        <if test="companyName !=null and companyName != '' ">
+            company_name = #{companyName},
+        </if>
+        <if test="ordered !=null ">
+            ordered = #{ordered},
+        </if>
+        <if test="description !=null and description != '' ">
+            description = #{description},
+        </if>
+        <if test="status !=null">
+            status = #{status}
+        </if>
+            where id = #{id};
+        </set>
+
+    </update>
+
 </mapper>

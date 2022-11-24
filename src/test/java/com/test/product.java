@@ -52,4 +52,30 @@ public class product {
 
 
     }
+    @Test
+    public void add() throws IOException {
+        int id = 99;
+        String name = "商品99";
+        String price = "1000.00";
+        //获取对象
+        //        加载mybatis的核心配置文件，获取sqlSessionFactory对象
+        Product product = new Product();
+        product.setId(id);
+        product.setName(name);
+        product.setPrice(price);
+
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+//        2.获取sqlSession对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        ProductMapper mapper = sqlSession.getMapper(ProductMapper.class);
+
+        mapper.add(product);
+        sqlSession.commit();
+        sqlSession.close();
+
+
+    }
 }

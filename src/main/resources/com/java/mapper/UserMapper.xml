@@ -6,6 +6,10 @@
     namesqpce:名称空间
 -->
 <mapper namespace="com.java.mapper.UserMapper">
+    <insert id="add">
+        insert into tb_user (username,password,gender,addr)
+        values (#{username},#{password},#{gender},#{addr})
+    </insert>
     <select id="selectAll" resultType="User">
         select * from tb_user;
     </select>

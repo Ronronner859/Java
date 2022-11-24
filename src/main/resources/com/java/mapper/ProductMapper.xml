@@ -6,6 +6,11 @@
     namesqpce:名称空间
 -->
 <mapper namespace="com.java.mapper.ProductMapper">
+    <insert id="add">
+        insert into product (name,price)
+        values (#{name},#{price});
+    </insert>
+
 
     <select id="selectAll" resultType="Product">
         select *

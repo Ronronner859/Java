@@ -10,5 +10,7 @@ public interface UserMapper {
     User selectById(int id);
 
 //    查询详情
+//    增加用户
+    void add(User user);
 
 }
