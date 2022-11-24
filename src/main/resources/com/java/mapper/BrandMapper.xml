@@ -122,5 +122,12 @@
         </set>
 
     </update>
+    <delete id="deleteById">
+        delete from tb_brand
+        where id = #{id};
+    </delete>
+
+
+
 
 </mapper>
