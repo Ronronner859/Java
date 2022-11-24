@@ -13,10 +13,10 @@
     <select id="selectAll" resultType="User">
         select * from tb_user;
     </select>
-    <select id="selectById" resultType="com.java.pojo.User">
-        select *
-        from tb_user where id = {#id};
-    </select>
+<!--    <select id="selectById" resultType="com.java.pojo.User">-->
+<!--        select *-->
+<!--        from tb_user where id = {#id};-->
+<!--    </select>-->
     <select id="selects" resultType="com.java.pojo.User">
         select *
         from tb_user

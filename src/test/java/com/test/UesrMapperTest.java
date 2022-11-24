@@ -37,4 +37,27 @@ public class UesrMapperTest {
         sqlSession.close();
 
     }
+    @Test
+    public void UserTestById() throws IOException {
+        int id = 2;
+        //        加载mybatis的核心配置文件，获取sqlSessionFactory对象
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+//        2.获取sqlSession对象
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        //获取mapper接口的代理对象
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+//        执行方法：
+
+
+        User user = userMapper.selectById(id);
+        System.out.println(user);
+
+
+        sqlSession.close();
+
+    }
 }

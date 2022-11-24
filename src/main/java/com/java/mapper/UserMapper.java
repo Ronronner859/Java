@@ -2,12 +2,16 @@ package com.java.mapper;
 
 import com.java.pojo.User;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 public interface UserMapper {
 
     List<User> selectAll();
+
+//    注解开发
+    @Select("select * from tb_user where id = #{id}")
     User selectById(int id);
 
 //    查询详情
