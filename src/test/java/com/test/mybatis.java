@@ -185,8 +185,8 @@ public class mybatis {
     @Test
     public void addUser() throws IOException {
         //获取对象
-       int id = 99;
-       String username = "买燕儿";
+       int id = 90;
+       String username = "cy";
        String password = "20000824";
        String gender = "女";
        String addr = "宁夏吴忠";
