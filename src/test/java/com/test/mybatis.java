@@ -186,7 +186,7 @@ public class mybatis {
     public void addUser() throws IOException {
         //获取对象
        int id = 90;
-       String username = "cy";
+       String username = "cy2";
        String password = "20000824";
        String gender = "女";
        String addr = "宁夏吴忠";

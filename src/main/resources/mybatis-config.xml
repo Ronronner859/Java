@@ -11,7 +11,7 @@
                     配置数据库的连接信息，可以配置多个environment
                     通过default 属性切换不同的development
     -->
-    <environments default="development">
+    <environments default="test">
         <environment id="development">
 <!--            管理事物-->
             <transactionManager type="JDBC"/>
@@ -29,7 +29,7 @@
             <dataSource type="POOLED">
                 <!--                数据库连接信息-->
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql:///mybatis?useSSL=false"/>
+                <property name="url" value="jdbc:mysql:///db1?useSSL=false"/>
                 <property name="username" value="root"/>
                 <property name="password" value="123456"/>
             </dataSource>

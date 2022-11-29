@@ -7,5 +7,17 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/mybatis</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="MySQL for 5.1 - db1@localhost" uuid="a16391da-9d18-494c-9b55-44abd8c9e0db">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/db1</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="mybatis@localhost [2]" uuid="071ba37d-eda0-4de4-9281-ff66bf07e294">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/mybatis</jdbc-url>
+    </data-source>
   </component>
 </project>

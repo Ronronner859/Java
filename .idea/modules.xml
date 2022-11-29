@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../项目/Tomcat-Demo2/Tomcat-Demo2.iml" filepath="$PROJECT_DIR$/../../../项目/Tomcat-Demo2/Tomcat-Demo2.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../项目/Tomcat-DemoTest/Tomcat-DemoTest.iml" filepath="$PROJECT_DIR$/../../../项目/Tomcat-DemoTest/Tomcat-DemoTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis-demo.iml" filepath="$PROJECT_DIR$/mybatis-demo.iml" />
     </modules>
