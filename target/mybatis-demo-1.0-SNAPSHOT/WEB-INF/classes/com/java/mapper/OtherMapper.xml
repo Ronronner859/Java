@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namesqpce:名称空间
+-->
+<mapper namespace="com.java.mapper.OtherMapper">
+
+
+    <select id="selectAll" resultType="com.java.pojo.Other">
+        select *
+        from tb_other;
+    </select>
+    <select id="selectById" resultType="com.java.pojo.Other">
+        select *
+        from tb_user
+        where id = #{id};
+    </select>
+</mapper>
